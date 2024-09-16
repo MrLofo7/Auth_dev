@@ -1,11 +1,17 @@
 import express from "express";
+import dotenv from "dotenv";
+
+import { connectDB } from "./db/connectDB,js";
 
 const app = express();
 
-app.get("/", async (req, res) => {
+dotenv.config();
+
+app.get("/", (req, res) => {
     res.send("Hello Mr Lofoneh");
 })
 
 app.listen(3000, () => {
+    connectDB();
     console.log("Server is running on port 3000");
 })
